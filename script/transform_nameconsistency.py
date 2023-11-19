@@ -19,6 +19,9 @@ def transform_tables():
     print("\nTable 3 After Transformation:")
     print(table3)
 
+    table1.to_csv("../files/matched_match_data.csv", index=False)
+    table3.to_csv("../files/matched_table.csv", index=False)
+
     # Return the transformed tables
     return table1, table2, table3
 
