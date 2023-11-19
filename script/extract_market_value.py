@@ -51,5 +51,5 @@ def extract_and_save_market_value_data(api_url, csv_filename):
 
 if __name__ == "__main__":
     premier_league_teams_url = 'https://transfermarkt-api.vercel.app/competitions/GB1/clubs?season_id=2023'
-    csv_filename = 'market_value_data.csv'
+    csv_filename = '../files/market_value_data.csv'
     extract_and_save_market_value_data(premier_league_teams_url, csv_filename)
