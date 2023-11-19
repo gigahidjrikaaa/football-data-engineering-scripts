@@ -31,7 +31,7 @@ def scrape_premier_league_data():
             rows.append([td.get_text(strip=True) for td in row.select('td')])
 
         # Write to CSV
-        csv_file = 'webscraped_table.csv'
+        csv_file = '../files/webscraped_table.csv'
         with open(csv_file, 'w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             # Write header
