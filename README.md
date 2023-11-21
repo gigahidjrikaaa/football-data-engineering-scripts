@@ -12,6 +12,6 @@ We want to know the correlation between the team's market value, expected goals,
 
 # Project Members
 Information Engineering Undergraduates
-- Izzat Arroyan
+- Izzat Arroyyan
 - Giga Hidjrika Aura Adkhy
 - Daffa Kamal
