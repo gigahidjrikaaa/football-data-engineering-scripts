@@ -29,9 +29,18 @@ def extract_market_value_data(teams):
         team_profile_api_url = f'https://transfermarkt-api.vercel.app/clubs/{team_id}/profile'
 
         profile_data = get_team_profile(team_profile_api_url)
-        market_value = profile_data.get('currentMarketValue', '')
+        market_value_str = profile_data.get('currentMarketValue', '')
 
-        market_value_data.append({'TeamID': team_id, 'TeamName': team_name, 'MarketValue': market_value})
+        # Remove currency symbol and convert MarketValue to int
+        market_value_str = market_value_str.replace('€', '').strip()
+        market_value_int = 0
+
+        if 'bn' in market_value_str:
+            market_value_int = int(float(market_value_str.replace('bn', '')) * 1e9)
+        elif 'm' in market_value_str:
+            market_value_int = int(float(market_value_str.replace('m', '')) * 1e6)
+
+        market_value_data.append({'TeamID': team_id, 'TeamName': team_name, 'MarketValue': market_value_int})
 
     return market_value_data
 
