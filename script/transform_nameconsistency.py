@@ -2,9 +2,9 @@ import pandas as pd
 
 def transform_tables():
     # Read the tables
-    table1 = pd.read_csv("../files/match_data.csv")
-    table2 = pd.read_csv("../files/market_value_data.csv")
-    table3 = pd.read_csv("../files/cleaned_table.csv")
+    table1 = pd.read_csv("files/match_data.csv")
+    table2 = pd.read_csv("files/market_value_data.csv")
+    table3 = pd.read_csv("files/cleaned_table.csv")
 
     # Transformations for Table 1
     table1 = transform_table1(table1)
@@ -19,8 +19,8 @@ def transform_tables():
     print("\nTable 3 After Transformation:")
     print(table3)
 
-    table1.to_csv("../files/matched_match_data.csv", index=False)
-    table3.to_csv("../files/matched_table.csv", index=False)
+    table1.to_csv("files/matched_match_data.csv", index=False)
+    table3.to_csv("files/matched_table.csv", index=False)
 
     # Return the transformed tables
     return table1, table2, table3

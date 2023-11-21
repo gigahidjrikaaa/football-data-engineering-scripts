@@ -64,9 +64,9 @@ def main():
     extracted_df = extract_api_matches(api_key)
 
     if extracted_df is not None:
-        export_to_csv(extracted_df, '../files/match_data.csv')
+        export_to_csv(extracted_df, 'files/match_data.csv')
         pd.set_option("display.max_rows", None)
-        print(pd.read_csv("../files/match_data.csv"))
+        print(pd.read_csv("files/match_data.csv"))
 
 if __name__ == "__main__":
     main()

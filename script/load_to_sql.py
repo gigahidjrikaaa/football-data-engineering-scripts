@@ -5,8 +5,8 @@ from sqlalchemy.exc import SQLAlchemyError
 def load_joined_tables_to_sql():
     try:
         # Read the joined tables
-        joined_match = pd.read_csv("../files/joined_matches.csv")
-        joined_team = pd.read_csv("../files/joined_teams.csv")
+        joined_match = pd.read_csv("files/joined_matches.csv")
+        joined_team = pd.read_csv("files/joined_teams.csv")
 
         # Display the joined tables
         print("Joined Match Table:")

@@ -28,8 +28,8 @@ def clean_premier_league_data(input_filename, output_filename):
     print(f'Cleaned data saved to {output_filename} successfully.')
 
 def main():
-    input_filename = '../files/webscraped_table.csv'
-    output_filename = '../files/cleaned_table.csv'
+    input_filename = 'files/webscraped_table.csv'
+    output_filename = 'files/cleaned_table.csv'
     clean_premier_league_data(input_filename, output_filename)
 
 if __name__ == "__main__":
