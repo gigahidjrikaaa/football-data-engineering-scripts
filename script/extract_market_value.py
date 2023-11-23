@@ -52,7 +52,7 @@ def save_to_csv(data, csv_filename):
 def main():
     # Define parameters
     premier_league_teams_url = 'https://transfermarkt-api.vercel.app/competitions/GB1/clubs?season_id=2023'
-    csv_filename = '../files/market_value_data.csv'
+    csv_filename = 'files/market_value_data.csv'
 
     # Extract and save market value data
     teams_data = get_premier_league_teams(premier_league_teams_url)
