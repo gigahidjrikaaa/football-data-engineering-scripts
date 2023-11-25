@@ -1,23 +1,30 @@
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import csv
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 def scrape_premier_league_data():
     # Create a new instance of the Firefox driver
-    driver = webdriver.Firefox()
+    options = Options()
+    options.headless = True
+    driver = webdriver.Firefox(options=options)
 
     try:
         # Go to the webpage
         driver.get("https://understat.com/league/EPL/2023")
 
         # Find the div element that contains the Premier League data
-        div = driver.find_element("id", "league-chemp")
+        div = driver.find_element(By.ID, "league-chemp")
 
         # Get the HTML content of the div element
         html = div.get_attribute("innerHTML")
 
-        # Print the HTML content
-        print(html)
+        # Log the success of web content scraping
+        logging.info("Successfully scraped web content")
 
         # Parse the HTML
         soup = BeautifulSoup(html, 'html.parser')
@@ -39,7 +46,10 @@ def scrape_premier_league_data():
             # Write rows
             writer.writerows(rows)
 
-        print(f'CSV file "{csv_file}" created successfully.')
+        logging.info(f'CSV file "{csv_file}" created successfully.')
+
+    except Exception as e:
+        logging.error(f"Error occurred while scraping data: {e}")
 
     finally:
         # Close the driver
