@@ -1,18 +1,7 @@
-import os
-from dotenv import load_dotenv
 import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 import logging
-
-# Load environment variables from the .env file
-load_dotenv()
-
-# Retrieve database connection information from environment variables
-db_username = os.environ.get('DB_USERNAME')
-db_password = os.environ.get('DB_PASSWORD')
-db_host = os.environ.get('DB_HOST')
-db_name = os.environ.get('DB_NAME')
 
 logging.basicConfig(level=logging.INFO)
 
@@ -25,7 +14,7 @@ def load_joined_tables_to_sql():
 
         # Load joined tables to PostgreSQL
         logging.info("Loading joined tables to PostgreSQL...")
-        connection_string = f'postgresql://{db_username}:{db_password}@{db_host}/{db_name}'
+        connection_string = f'postgresql://xckamlge:3C6lFmwXepyQj6T7fUCZCtcfHuuyRkKV@lucky.db.elephantsql.com/xckamlge'
         engine = create_engine(connection_string)
 
         # Specify table names

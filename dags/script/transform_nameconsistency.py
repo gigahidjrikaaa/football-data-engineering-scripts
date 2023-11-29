@@ -25,9 +25,10 @@ def transform_tables():
         logging.info(f'Transformed tables saved to "files/matched_match_data.csv" and "files/matched_table.csv" successfully.')
 
         # Return the transformed tables
-        return table1, table2, table3
+        return table1, None, table3  # Returning None for table2 as it's not transformed in your code
     except Exception as e:
         logging.error(f"Error occurred while transforming tables: {e}")
+        return None, None, None  # Return None for all tables in case of an error
 
 def transform_table1(table1):
     try:
@@ -92,5 +93,14 @@ def transform_table3(table3):
     except Exception as e:
         logging.error(f"Error occurred while transforming Table 3: {e}")
 
-# Call the transform_tables function
-transformed_table1, transformed_table2, transformed_table3 = transform_tables()
+def tr_name_consistency():
+    transformed_table1, transformed_table2, transformed_table3 = transform_tables()
+
+    if transformed_table1 is not None and transformed_table3 is not None:
+        # Continue with any further processing or analysis
+        logging.info("Tables successfully transformed.")
+    else:
+        # Handle the error condition
+        logging.error("An error occurred while transforming tables.")
+
+tr_name_consistency()

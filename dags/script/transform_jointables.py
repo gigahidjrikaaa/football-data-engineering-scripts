@@ -36,6 +36,16 @@ def join_tables():
         return joined_table1_2, joined_table2_3
     except Exception as e:
         logging.error(f"Error occurred while joining tables: {e}")
+        return None, None  # Return None for both tables in case of an error
 
-# Call the join_tables function
-joined_table1_2, joined_table2_3 = join_tables()
+def tr_join_tables():
+    joined_table1_2, joined_table2_3 = join_tables()
+
+    if joined_table1_2 is not None and joined_table2_3 is not None:
+        # Continue with any further processing or analysis
+        logging.info("Tables successfully joined. Ready to load to sql database")
+    else:
+        # Handle the error condition
+        logging.error("An error occurred while joining tables.")
+
+tr_join_tables()
