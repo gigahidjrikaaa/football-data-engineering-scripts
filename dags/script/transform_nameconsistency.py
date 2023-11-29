@@ -1,15 +1,22 @@
 import pandas as pd
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 
 def transform_tables():
     try:
+        # Ensure that the 'files' directory exists before reading the tables
+        files_directory = 'dags/files'
+        if not os.path.exists(files_directory):
+            os.makedirs(files_directory)
+            logging.info(f"Directory {files_directory} created successfully.")
+
         # Read the tables
         logging.info("Reading the tables...")
-        table1 = pd.read_csv("files/match_data.csv")
-        table2 = pd.read_csv("files/market_value_data.csv")
-        table3 = pd.read_csv("files/cleaned_table.csv")
+        table1 = pd.read_csv(os.path.join(files_directory, 'match_data.csv'))
+        table2 = pd.read_csv(os.path.join(files_directory, 'market_value_data.csv'))
+        table3 = pd.read_csv(os.path.join(files_directory, 'cleaned_table.csv'))
 
         # Transformations for Table 1
         logging.info("Transforming Table 1...")
@@ -19,10 +26,12 @@ def transform_tables():
         logging.info("Transforming Table 3...")
         table3 = transform_table3(table3)
 
-        table1.to_csv("files/matched_match_data.csv", index=False)
-        table3.to_csv("files/matched_table.csv", index=False)
+        matched_match_data_csv = os.path.join(files_directory, 'matched_match_data.csv')
+        matched_table_csv = os.path.join(files_directory, 'matched_table.csv')
+        table1.to_csv(matched_match_data_csv, index=False)
+        table3.to_csv(matched_table_csv, index=False)
 
-        logging.info(f'Transformed tables saved to "files/matched_match_data.csv" and "files/matched_table.csv" successfully.')
+        logging.info(f'Transformed tables saved to {matched_match_data_csv} and {matched_table_csv} successfully.')
 
         # Return the transformed tables
         return table1, None, table3  # Returning None for table2 as it's not transformed in your code

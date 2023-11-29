@@ -126,9 +126,9 @@ matchId,matchday,homeTeam,homeTeamId,awayTeam,awayTeamId,homeScore,awayScore,pla
 436070,13,Nottingham Forest FC,351,Brighton & Hove Albion FC,397,2.0,3.0,True
 436071,13,Sheffield United FC,356,AFC Bournemouth,1044,1.0,3.0,True
 436063,13,Brentford FC,402,Arsenal FC,57,0.0,1.0,True
-436072,13,Tottenham Hotspur FC,73,Aston Villa FC,58,,,False
-436065,13,Everton FC,62,Manchester United FC,66,,,False
-436066,13,Fulham FC,63,Wolverhampton Wanderers FC,76,,,False
+436072,13,Tottenham Hotspur FC,73,Aston Villa FC,58,1.0,2.0,True
+436065,13,Everton FC,62,Manchester United FC,66,0.0,3.0,True
+436066,13,Fulham FC,63,Wolverhampton Wanderers FC,76,3.0,2.0,True
 436074,14,Arsenal FC,57,Wolverhampton Wanderers FC,76,,,False
 436075,14,Brentford FC,402,Luton Town FC,389,,,False
 436076,14,Burnley FC,328,Sheffield United FC,356,,,False

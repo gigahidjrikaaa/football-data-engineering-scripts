@@ -1,0 +1,28 @@
+[2023-11-29T14:28:23.091+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.transform_jointables scheduled__2023-03-10T00:00:00+00:00 [queued]>
+[2023-11-29T14:28:23.107+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.transform_jointables scheduled__2023-03-10T00:00:00+00:00 [queued]>
+[2023-11-29T14:28:23.109+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T14:28:23.109+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2023-11-29T14:28:23.110+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T14:28:23.370+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): transform_jointables> on 2023-03-10 00:00:00+00:00
+[2023-11-29T14:28:23.381+0000] {standard_task_runner.py:55} INFO - Started process 706 to run task
+[2023-11-29T14:28:23.384+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'football-etl', 'transform_jointables', 'scheduled__2023-03-10T00:00:00+00:00', '--job-id', '422', '--raw', '--subdir', 'DAGS_FOLDER/dag-football.py', '--cfg-path', '/tmp/tmpxvopze3n']
+[2023-11-29T14:28:23.385+0000] {standard_task_runner.py:83} INFO - Job 422: Subtask transform_jointables
+[2023-11-29T14:28:23.459+0000] {task_command.py:388} INFO - Running <TaskInstance: football-etl.transform_jointables scheduled__2023-03-10T00:00:00+00:00 [running]> on host 6377c365460c
+[2023-11-29T14:28:23.546+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=football-etl
+AIRFLOW_CTX_TASK_ID=transform_jointables
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-10T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-10T00:00:00+00:00
+[2023-11-29T14:28:23.550+0000] {transform_jointables.py:19} INFO - Reading the tables...
+[2023-11-29T14:28:23.575+0000] {transform_jointables.py:25} INFO - Joining Table 1 and Table 2...
+[2023-11-29T14:28:23.587+0000] {transform_jointables.py:37} INFO - Joining Table 2 and Table 3...
+[2023-11-29T14:28:23.604+0000] {transform_jointables.py:47} INFO - Joined tables saved to "dags/files/joined_matches.csv" and "dags/files/joined_teams.csv" successfully.
+[2023-11-29T14:28:23.604+0000] {transform_jointables.py:60} INFO - Tables successfully joined. Ready to load to SQL database.
+[2023-11-29T14:28:23.605+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-11-29T14:28:23.618+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=football-etl, task_id=transform_jointables, execution_date=20230310T000000, start_date=20231129T142823, end_date=20231129T142823
+[2023-11-29T14:28:23.676+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2023-11-29T14:28:23.703+0000] {taskinstance.py:2578} INFO - 1 downstream tasks scheduled from follow-on schedule check

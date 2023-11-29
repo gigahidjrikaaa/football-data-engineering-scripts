@@ -13,7 +13,7 @@ from script.webscrape import scrape_premier_league_data
 
 # Define default_args dictionary to specify the default parameters for the DAG
 default_args = {
-    'owner': 'your_name',
+    'owner': 'airflow',
     'start_date': datetime(2023, 1, 1),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
@@ -21,10 +21,10 @@ default_args = {
 
 # Instantiate a DAG
 dag = DAG(
-    'your_dag_id',
+    'football-etl',
     default_args=default_args,
-    description='Your DAG description',
-    schedule_interval='@daily',  # Set the schedule interval for your DAG
+    description='DAG for premier league data pipeline',
+    schedule_interval=timedelta(days=1),  # Set the schedule interval for your DAG
 )
 
 # Define tasks using PythonOperator for each script
@@ -64,15 +64,20 @@ transform_nameconsistency_task = PythonOperator(
     dag=dag,
 )
 
-webscrape_task = PythonOperator(
-    task_id='webscrape',
-    python_callable=scrape_premier_league_data,
-    dag=dag,
-)
+##webscrape_task = PythonOperator(
+##    task_id='webscrape',
+##    python_callable=scrape_premier_league_data,
+##    dag=dag,
+##)
 
 # Define task dependencies
-clean_webscraped_task >> extract_market_value_task >> extract_matches_task >> transform_jointables_task
-transform_nameconsistency_task >> load_to_sql_task
+#webscrape_task >> clean_webscraped_task
+extract_market_value_task >> transform_nameconsistency_task
+clean_webscraped_task >> transform_nameconsistency_task
+extract_matches_task >> transform_nameconsistency_task
+transform_nameconsistency_task >> transform_jointables_task
+transform_jointables_task >> load_to_sql_task
 
 if __name__ == "__main__":
     dag.cli()
+    

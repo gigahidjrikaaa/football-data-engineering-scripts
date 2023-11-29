@@ -1,0 +1,11 @@
+[2023-11-29T13:44:03.418+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.extract_market_value scheduled__2023-01-16T00:00:00+00:00 [queued]>
+[2023-11-29T13:44:03.435+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.extract_market_value scheduled__2023-01-16T00:00:00+00:00 [queued]>
+[2023-11-29T13:44:03.436+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T13:44:03.437+0000] {taskinstance.py:1280} INFO - Starting attempt 2 of 2
+[2023-11-29T13:44:03.438+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T13:44:03.471+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): extract_market_value> on 2023-01-16 00:00:00+00:00
+[2023-11-29T13:44:03.481+0000] {standard_task_runner.py:55} INFO - Started process 108 to run task
+[2023-11-29T13:44:03.484+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'football-etl', 'extract_market_value', 'scheduled__2023-01-16T00:00:00+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/dag-football.py', '--cfg-path', '/tmp/tmpll8sv0x3']
+[2023-11-29T13:44:03.485+0000] {standard_task_runner.py:83} INFO - Job 78: Subtask extract_market_value
