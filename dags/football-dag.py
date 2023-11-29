@@ -5,8 +5,8 @@ from script.clean_webscraped import clean_webscraped_data
 from script.extract_market_value import extract_mv
 from script.extract_matches import extract_matches
 from script.load_to_sql import load_joined_tables_to_sql
-from script.transform_jointables import join_tables
-from script.transform_nameconsistency import transform_tables
+from script.transform_jointables import tr_join_tables
+from script.transform_nameconsistency import tr_name_consistency
 from script.webscrape import scrape_premier_league_data
 
 default_args = {
@@ -49,13 +49,13 @@ task_load_to_sql = PythonOperator(
 
 task_transform_jointables = PythonOperator(
     task_id='task_transform_jointables',
-    python_callable=join_tables,
+    python_callable=tr_join_tables,
     dag=dag,
 )
 
 task_transform_nameconsistency = PythonOperator(
     task_id='task_transform_nameconsistency',
-    python_callable=transform_tables,
+    python_callable=tr_name_consistency,
     dag=dag,
 )
 
