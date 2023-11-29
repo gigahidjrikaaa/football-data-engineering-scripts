@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
+from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 from script.clean_webscraped import clean_webscraped_data
 from script.extract_market_value import extract_mv
