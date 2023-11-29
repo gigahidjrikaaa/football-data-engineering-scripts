@@ -72,7 +72,7 @@ def extract_api_matches(api_key):
         df = pd.DataFrame(match_data)
         return df
 
-def main():
+def extract_matches():
     api_key = '665716355f514b80a47297ebe9c18748'
     extracted_df = extract_api_matches(api_key)
 
@@ -82,4 +82,4 @@ def main():
         print(pd.read_csv("files/match_data.csv"))
 
 if __name__ == "__main__":
-    main()
+    extract_matches()

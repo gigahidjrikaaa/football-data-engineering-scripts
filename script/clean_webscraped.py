@@ -36,10 +36,10 @@ def clean_premier_league_data(input_filename, output_filename):
     except Exception as e:
         logging.error(f"Error occurred while cleaning Premier League data: {e}")
 
-def main():
+def clean_webscraped_data():
     input_filename = 'files/webscraped_table.csv'
     output_filename = 'files/cleaned_table.csv'
     clean_premier_league_data(input_filename, output_filename)
 
 if __name__ == "__main__":
-    main()
+    clean_webscraped_data()
