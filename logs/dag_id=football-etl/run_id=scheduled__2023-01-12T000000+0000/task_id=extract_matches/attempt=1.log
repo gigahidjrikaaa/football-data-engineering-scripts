@@ -1,0 +1,37 @@
+[2023-11-29T13:03:16.211+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.extract_matches scheduled__2023-01-12T00:00:00+00:00 [queued]>
+[2023-11-29T13:03:16.227+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.extract_matches scheduled__2023-01-12T00:00:00+00:00 [queued]>
+[2023-11-29T13:03:16.228+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T13:03:16.229+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2023-11-29T13:03:16.229+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T13:03:16.253+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): extract_matches> on 2023-01-12 00:00:00+00:00
+[2023-11-29T13:03:16.264+0000] {standard_task_runner.py:55} INFO - Started process 811 to run task
+[2023-11-29T13:03:16.268+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'football-etl', 'extract_matches', 'scheduled__2023-01-12T00:00:00+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/dag-football.py', '--cfg-path', '/tmp/tmp7kzsdtwn']
+[2023-11-29T13:03:16.269+0000] {standard_task_runner.py:83} INFO - Job 54: Subtask extract_matches
+[2023-11-29T13:03:16.595+0000] {task_command.py:388} INFO - Running <TaskInstance: football-etl.extract_matches scheduled__2023-01-12T00:00:00+00:00 [running]> on host 6377c365460c
+[2023-11-29T13:03:16.684+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=football-etl
+AIRFLOW_CTX_TASK_ID=extract_matches
+AIRFLOW_CTX_EXECUTION_DATE=2023-01-12T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-01-12T00:00:00+00:00
+[2023-11-29T13:03:20.693+0000] {extract_matches.py:14} ERROR - Error Connecting: HTTPSConnectionPool(host='api.football-data.org', port=443): Max retries exceeded with url: /v4/competitions/PL/matches?season=2023 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0470677c90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+[2023-11-29T13:03:20.694+0000] {taskinstance.py:1768} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/script/extract_matches.py", line 77, in extract_matches
+    extracted_df = extract_api_matches(api_key)
+  File "/opt/airflow/dags/script/extract_matches.py", line 62, in extract_api_matches
+    response = make_api_request(url, headers, params)
+  File "/opt/airflow/dags/script/extract_matches.py", line 19, in make_api_request
+    return response
+UnboundLocalError: local variable 'response' referenced before assignment
+[2023-11-29T13:03:20.710+0000] {taskinstance.py:1323} INFO - Marking task as UP_FOR_RETRY. dag_id=football-etl, task_id=extract_matches, execution_date=20230112T000000, start_date=20231129T130316, end_date=20231129T130320
+[2023-11-29T13:03:20.723+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 54 for task extract_matches (local variable 'response' referenced before assignment; 811)
+[2023-11-29T13:03:20.773+0000] {local_task_job.py:208} INFO - Task exited with return code 1
+[2023-11-29T13:03:20.965+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check

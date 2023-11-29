@@ -1,0 +1,24 @@
+[2023-11-29T14:26:45.063+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.clean_webscraped scheduled__2023-03-03T00:00:00+00:00 [queued]>
+[2023-11-29T14:26:45.077+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.clean_webscraped scheduled__2023-03-03T00:00:00+00:00 [queued]>
+[2023-11-29T14:26:45.077+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T14:26:45.078+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2023-11-29T14:26:45.079+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T14:26:45.355+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): clean_webscraped> on 2023-03-03 00:00:00+00:00
+[2023-11-29T14:26:45.365+0000] {standard_task_runner.py:55} INFO - Started process 221 to run task
+[2023-11-29T14:26:45.368+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'football-etl', 'clean_webscraped', 'scheduled__2023-03-03T00:00:00+00:00', '--job-id', '326', '--raw', '--subdir', 'DAGS_FOLDER/dag-football.py', '--cfg-path', '/tmp/tmpxxz3befj']
+[2023-11-29T14:26:45.370+0000] {standard_task_runner.py:83} INFO - Job 326: Subtask clean_webscraped
+[2023-11-29T14:26:45.444+0000] {task_command.py:388} INFO - Running <TaskInstance: football-etl.clean_webscraped scheduled__2023-03-03T00:00:00+00:00 [running]> on host 6377c365460c
+[2023-11-29T14:26:45.539+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=football-etl
+AIRFLOW_CTX_TASK_ID=clean_webscraped
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-03T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-03T00:00:00+00:00
+[2023-11-29T14:26:45.572+0000] {clean_webscraped.py:42} INFO - Cleaned data saved to dags/files/cleaned_table.csv successfully.
+[2023-11-29T14:26:45.573+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-11-29T14:26:45.589+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=football-etl, task_id=clean_webscraped, execution_date=20230303T000000, start_date=20231129T142645, end_date=20231129T142645
+[2023-11-29T14:26:45.620+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2023-11-29T14:26:45.736+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check

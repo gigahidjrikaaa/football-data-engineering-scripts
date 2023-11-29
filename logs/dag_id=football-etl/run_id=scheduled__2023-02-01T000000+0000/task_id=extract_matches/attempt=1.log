@@ -1,0 +1,24 @@
+[2023-11-29T13:53:57.937+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.extract_matches scheduled__2023-02-01T00:00:00+00:00 [queued]>
+[2023-11-29T13:53:57.957+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: football-etl.extract_matches scheduled__2023-02-01T00:00:00+00:00 [queued]>
+[2023-11-29T13:53:57.958+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T13:53:57.959+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2023-11-29T13:53:57.959+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2023-11-29T13:53:57.989+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): extract_matches> on 2023-02-01 00:00:00+00:00
+[2023-11-29T13:53:57.998+0000] {standard_task_runner.py:55} INFO - Started process 786 to run task
+[2023-11-29T13:53:58.002+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'football-etl', 'extract_matches', 'scheduled__2023-02-01T00:00:00+00:00', '--job-id', '159', '--raw', '--subdir', 'DAGS_FOLDER/dag-football.py', '--cfg-path', '/tmp/tmpkd08lnf2']
+[2023-11-29T13:53:58.003+0000] {standard_task_runner.py:83} INFO - Job 159: Subtask extract_matches
+[2023-11-29T13:53:58.358+0000] {task_command.py:388} INFO - Running <TaskInstance: football-etl.extract_matches scheduled__2023-02-01T00:00:00+00:00 [running]> on host 6377c365460c
+[2023-11-29T13:53:58.454+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=football-etl
+AIRFLOW_CTX_TASK_ID=extract_matches
+AIRFLOW_CTX_EXECUTION_DATE=2023-02-01T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-02-01T00:00:00+00:00
+[2023-11-29T13:53:59.297+0000] {extract_matches.py:13} ERROR - HTTP Error: 429 Client Error:  for url: https://api.football-data.org/v4/competitions/PL/matches?season=2023
+[2023-11-29T13:53:59.298+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-11-29T13:53:59.310+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=football-etl, task_id=extract_matches, execution_date=20230201T000000, start_date=20231129T135357, end_date=20231129T135359
+[2023-11-29T13:53:59.340+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2023-11-29T13:53:59.597+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check

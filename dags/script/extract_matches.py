@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 
@@ -49,6 +50,12 @@ def extract_match_data(matches):
 
 def export_to_csv(dataframe, csv_filename):
     try:
+        # Ensure that the directory exists before saving the file
+        directory = os.path.dirname(csv_filename)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+            logging.info(f"Directory {directory} created successfully.")
+
         dataframe.to_csv(csv_filename, index=False)
         logging.info(f"Data exported to {csv_filename} successfully.")
     except Exception as e:
@@ -74,12 +81,20 @@ def extract_api_matches(api_key):
 
 def extract_matches():
     api_key = '665716355f514b80a47297ebe9c18748'
+    csv_filename = 'dags/files/match_data.csv'
+
+    # Ensure the 'files' directory exists before running the script
+    files_directory = os.path.dirname(csv_filename)
+    if not os.path.exists(files_directory):
+        os.makedirs(files_directory)
+        logging.info(f"Directory {files_directory} created successfully.")
+
     extracted_df = extract_api_matches(api_key)
 
     if extracted_df is not None:
-        export_to_csv(extracted_df, 'files/match_data.csv')
+        export_to_csv(extracted_df, csv_filename)
         pd.set_option("display.max_rows", None)
-        print(pd.read_csv("files/match_data.csv"))
+        print(pd.read_csv(csv_filename))
 
 if __name__ == "__main__":
     extract_matches()

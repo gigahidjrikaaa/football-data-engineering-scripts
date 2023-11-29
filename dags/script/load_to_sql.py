@@ -2,15 +2,22 @@ import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 
 def load_joined_tables_to_sql():
     try:
+        files_directory = 'dags/files'
+        if not os.path.exists(files_directory):
+            os.makedirs(files_directory)
+            logging.info(f"Directory {files_directory} created successfully.")
         # Read the joined tables
         logging.info("Reading the joined tables...")
-        joined_match = pd.read_csv("files/joined_matches.csv")
-        joined_team = pd.read_csv("files/joined_teams.csv")
+        #joined_match = pd.read_csv("files/joined_matches.csv")
+        joined_match = pd.read_csv(os.path.join(files_directory, 'joined_matches.csv'))
+        joined_team = pd.read_csv(os.path.join(files_directory, 'joined_teams.csv'))
+        #joined_team = pd.read_csv("files/joined_teams.csv")
 
         # Load joined tables to PostgreSQL
         logging.info("Loading joined tables to PostgreSQL...")

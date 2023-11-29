@@ -1,5 +1,6 @@
 import pandas as pd
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 
@@ -27,6 +28,12 @@ def clean_numeric_columns(column):
 
 def clean_premier_league_data(input_filename, output_filename):
     try:
+        # Ensure that the 'files' directory exists before reading or writing the files
+        files_directory = 'files'
+        if not os.path.exists(files_directory):
+            os.makedirs(files_directory)
+            logging.info(f"Directory {files_directory} created successfully.")
+
         df = pd.read_csv(input_filename)
         df.rename(columns={'№': 'No'}, inplace=True)
         columns_to_clean = ['xG', 'xGA', 'xPTS']
@@ -37,8 +44,8 @@ def clean_premier_league_data(input_filename, output_filename):
         logging.error(f"Error occurred while cleaning Premier League data: {e}")
 
 def clean_webscraped_data():
-    input_filename = 'files/webscraped_table.csv'
-    output_filename = 'files/cleaned_table.csv'
+    input_filename = 'dags/files/webscraped_table.csv'
+    output_filename = 'dags/files/cleaned_table.csv'
     clean_premier_league_data(input_filename, output_filename)
 
 if __name__ == "__main__":
