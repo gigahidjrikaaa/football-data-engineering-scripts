@@ -57,7 +57,7 @@ def save_to_csv(data, csv_filename):
     except Exception as e:
         logging.error(f"Error occurred while exporting data to CSV: {e}")
 
-def main():
+def extract_mv():
     premier_league_teams_url = 'https://transfermarkt-api.vercel.app/competitions/GB1/clubs?season_id=2023'
     csv_filename = 'files/market_value_data.csv'
     teams_data = get_premier_league_teams(premier_league_teams_url)
@@ -68,4 +68,4 @@ def main():
         logging.info("No data to process.")
 
 if __name__ == "__main__":
-    main()
+    extract_mv()
